@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-=======
+
 # nodejs
 This is a repo me learning nodejs 
 
-
-
-
-
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
 npm 
 npx 
-
 
 
 npm init --makes a package.json
@@ -84,14 +77,11 @@ For a single request made there is always only a single response.
 +++++++++++++++++                         ++++++++++++++++++++++
 
 _________________________	types of middleware 	__________________________________
-<<<<<<< HEAD
+
 
 
 1.APPLICATION LEVEL MIDDLEWARE 
  -has direct scope of http req ,http response and next 	
-=======
-1.application level middleware -has direct scope of http req ,http response and next 	
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
   direct scope can hence add and delete different properties to http method like:
   
   // req.sagarmatha =    "college"   	--adds properties to the object
@@ -101,11 +91,9 @@ _________________________	types of middleware 	_________________________________
   																			   middleware.app.use(function(req,respose,next){}),validation is used by this middleware
   																			   
   																			   
-<<<<<<< HEAD
+
 2.ROUTING MIDDLEWARE
-=======
-2.routing middleware
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
+
 	
 	------------------------------ROUTING----------------------------------------
 	How an API responds to the client requests. ---- for server side,bke
@@ -126,10 +114,11 @@ _________________________	types of middleware 	_________________________________
 
 
 3.Third party middleware
-<<<<<<< HEAD
+
   ----------------------------------------MORGAN---------------------------------------
   Morgan - Http request logger middleware .It is used in apllication level middleware app.use.
   app.use(morgan("dev"))
+  
 4.Inbuilt Middleware
 --serve static content
 	app.use(express.static("foldername"))
@@ -147,50 +136,21 @@ _________________________	types of middleware 	_________________________________
      //res.status(400) --if not set then this error is in 200 which is green and represents success.
 
 
-=======
-4.Inbuilt Middleware
-5.error handling middleware
-   middleware with four args .and doesn,t get invokes automatically  in between req-res cycle.
-   calling next with aargs invokes err handling middleware.
-     syntax
-     app.use((err,req,res,next) => {}) --err is for error and other as application level middleware. 
-     
-     TODO sets the status code for the error so in client side we can get promise handling in catch insted of then.
-     res.status(400) --if not set 
-     then this error is in 200 which is green and represents success.
-     ![alt text](https://raw.githubusercontent.com/auzhuman/nodejs/master/Screenshot%20from%202022-06-22%2015-28-17.png)
+
  
 
 ----------------------------------------MORGAN---------------------------------------
 Morgan - Http request logger middleware .It is used in apllication level middleware app.use.
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
------------
 (mount incoming requests)
 app.get(/notifi,(req,res,next) =>{} --exact http method,and exact http url
 (specific endpoint handler)
 app.use(/notifi,(req,res,next) =>{} --regardless of http method and exct http url
-<<<<<<< HEAD
-(for all)
-=======
 
-
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
 app.use(req,res,next) => {} --regardless of http method and url
------------
 
 
-<<<<<<< HEAD
 Globals
 => __dirname gives the directory name.
 => process.cwd() --gives the root directory.
 
-=======
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
 
-
-    
-
-<<<<<<< HEAD
-
-=======
->>>>>>> f8022246cdcb328e0785f54b7a6e57483c013361
