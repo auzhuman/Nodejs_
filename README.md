@@ -100,17 +100,20 @@ _________________________	types of middleware 	_________________________________
 	What content is loaded for each url ---for client side -fte
 	-get,put,post,delete
 	next hands the control to next handler.
-	express.router is used for routing
-	unlike using --app / --route is used 
-	for eg.route.get,route.put
-	we can use route for different http methods like a nested promise handling.
-	for eg app.route('/home')
+        1.express.router is used for routing
+	  unlike using --app / --router is used 
+	  -for eg.router.get,router.put -- router can be declared  with any variable
+	  -const about = require("express").Router()
+	  
+	2.we can use route for different http methods like a nested promise handling.
+	  for eg app.route('/home')
 	         .get({})
 	         .put({})
-	It is also called a miniapp.
+	  It is also called a miniapp.
         but in router we cannot use it to listen to the port.
         
-        router.route('/:name') //dynamic handler must be at last 
+        router.route('/:name')  //dynamic handler must be at last 
+        about.route(/home)
 
 
 3.Third party middleware
@@ -120,11 +123,13 @@ _________________________	types of middleware 	_________________________________
   app.use(morgan("dev"))
   
 4.Inbuilt Middleware
---serve static content
+  --serve static content
 	app.use(express.static("foldername"))
 	app.use("/file",express.static("foldername'))
 	--use this instead of the above inorder to have folder naming clear..
+	
 	app.use("file",express.static(path.join(processcwd(),"foldername")))
+	
 5.ERROR HANDLING MIDDLEWARE
 
    middleware with four args .and doesn,t get invokes automatically  in between req-res cycle.
@@ -149,8 +154,30 @@ app.use(/notifi,(req,res,next) =>{} --regardless of http method and exct http ur
 app.use(req,res,next) => {} --regardless of http method and url
 
 
-Globals
+--------------------------------GLOBALS------------------------------------------
 => __dirname gives the directory name.
 => process.cwd() --gives the root directory.
+
+  
+
+------------------MEMORY ALLOCATION IN EXPRESS-------------------
+app.set('port',4554) //allocation of memory
+app.get('port')
+
+
+----------------------------VIEWS --IN -EXPRESS--------------------------------
+Presentation layer ---first collects data and views data.
+View is done in express as it is a webframework. But usually done in react,angular,and app is made using express.
+View layer setup --
+ without using static html we use templating engines.
+ browser uses templating engines into html codes to render .
+ many templating engines.for eg pug
+ installation  ==> npm install pug,ejs
+ 
+ 1/Template engine setup/
+    app.set('view engine',require('pug')
+    app.set('view',path.join(process.cwd(),'views'))
+ 2.Create a file with .pug extension
+      
 
 
