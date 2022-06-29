@@ -1,6 +1,8 @@
 //import express
 const express = require("express")
 const app = express()
+const path = require('path')
+app.engine('pug', require('pug').__express)
 
 //port no
 const PORT = 8090
@@ -20,7 +22,14 @@ const password = require("./middleware/password")
 
 
 
-//morgan usage kept at first
+
+
+//setting template engine
+app.set("view engine",require('pug'))
+app.set("views",path.join(process.cwd(),"views"))
+//setting template engine
+
+//morgan usage kept at first 
 app.use(morgan("dev"))
 
 app.use("/login",username,password,(req,res,next) => {
