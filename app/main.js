@@ -5,22 +5,23 @@ const path = require('path')
 app.engine('pug', require('pug').__express)
 
 //port no
-const PORT = 8090
+const PORT = 8088
 
 //prints log
 const morgan = require("morgan")
 
 //import middleware about
-const about = require('./middleware/about.contoller')
+const home = require('./middleware/home.contoller')
 // import middleware search
 const search = require('./middleware/search')
 //import middleware home
-const home = require("./middleware/home")
+const about = require("./middleware/about")
 //import middlware for login
 const username = require("./middleware/username")
 const password = require("./middleware/password")
 
-
+//morgan usage kept at first 
+app.use(morgan("dev"))
 
 
 
@@ -29,24 +30,21 @@ app.set("view engine",require('pug'))
 app.set("views",path.join(process.cwd(),"views"))
 //setting template engine
 
-//morgan usage kept at first 
-app.use(morgan("dev"))
+
+// parser for json
+app.use(express.json())
+
+//parser for get-url-encoded
+app.use(express.urlencoded({
+    extended: "true"
+}))
 
 app.use("/login",username,password,(req,res,next) => {
     res.send("login success")
 })
 app.use("/home",home)
-app.use("/search",search)
 app.use("/about",about)
-
-
-
-
-
-
-
-
-
+app.use("/search",search)
 
 //error handling middleware
 app.use((err,req,res,next) =>{
