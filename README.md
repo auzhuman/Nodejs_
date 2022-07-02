@@ -173,11 +173,48 @@ View layer setup --
  browser uses templating engines into html codes to render .
  many templating engines.for eg pug
  installation  ==> npm install pug,ejs
- 
+ ----------------PUG---------------
  1/Template engine setup/
+    app.engine('pug', require('pug').__express)//this worked..
     app.set('view engine',require('pug')
     app.set('view',path.join(process.cwd(),'views'))
  2.Create a file with .pug extension
+    same as html with indentation.
+ 3.To render the .pug into view
+    app.render(index.pug,datalikejson)
+    from the controller we can pass data to pug using assignment operator
+      like idex.pug
+      head
+        title= title  //there should be no space while assigning.
+      body 
+        h1 welcome
+        p= message
+
+      app.render("index.pug",{
+        tile : "KGF 2",
+        message : "This is a blockbuster movie"
+      })
+
+  WHY TEMPLATING ENGINE??
+   Since we can directly load a html file using static operation and we cannot make change from the middleware or backend.So inorder to make changes to the view from our cotroller we use templating engine.
+ 
+ ---------------------------------------PARSER----------------------------very-imp-------
+  Incoming data must be parsed by server.EVERY REQUEST HAS HTTP HEADERS AND HEADERS HAS A 
+  CONTENT TYPE--content type holds what type of content is there.
+  Server must have parser for each incomig request and its content type.So INBUILT MIDDLEWARE is used to parse the 
+  content types.
+  for eg.parser for x-www-form-urlencoded
+    app.use(express.urlencoded({
+          extended:"true"
+          }))
+   for json parser:
+    app.use(express.json())
+    
+   thsese middleware adds body property in req obj
+    and body property holds data from the client.  //use in post req.
+    
+    view to controller in middle parser is used
+    
       
 
 
