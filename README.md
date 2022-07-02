@@ -215,6 +215,17 @@ View layer setup --
     
     view to controller in middle parser is used
     
+    
+    
+-----------------------------GETTING STARTED WITH EXPRESS    
+    
+--the things that have been done till now can be done in blink of seconds using express.
+
+npm install -g express-generator@latest or version  
+
+it can create app.js,views , controller .package.json all at  once  so an app can be built easily
+    and run through npm start
+    
       
 
 
